@@ -1,4 +1,4 @@
-const memory = [75];
+const memory = [];
 
 const createCells = function (numberOfCells) {
   const numbersSection = document.getElementById("bingo");
@@ -14,5 +14,28 @@ const createCells = function (numberOfCells) {
     numbersSection.appendChild(cell);
   }
 };
+
+// random number
+
+function genRandomNumber() {
+  let randomNumber;
+
+  if (memory.length >= 76) return "All numbers drawn!";
+  do {
+    randomNumber = Math.floor(Math.random() * 76) + 1;
+  } while (memory.includes(randomNumber));
+
+  memory.push(randomNumber);
+  return randomNumber;
+}
+
+let showNumber = function () {
+  const extractedNumber = document.getElementById("extractedNumber");
+  const randomNumber = genRandomNumber();
+
+  extractedNumber.innerText = randomNumber;
+};
+
+document.getElementById("extractButton").addEventListener("click", showNumber);
 
 createCells(76);
