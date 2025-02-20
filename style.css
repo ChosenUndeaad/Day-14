@@ -10,7 +10,8 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#container {
+#container,
+#genCards {
   background-color: rgb(24, 24, 27);
   padding: 1em;
   border-radius: 1em;
@@ -66,4 +67,8 @@ button {
   background-color: rgb(24, 24, 27);
   padding: 1em;
   border-radius: 1em;
+}
+
+div {
+  margin-bottom: 1em;
 }

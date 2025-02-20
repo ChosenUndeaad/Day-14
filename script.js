@@ -15,8 +15,7 @@ const createCells = function (numberOfCells) {
     cell.appendChild(cellValue);
     numbersSection.appendChild(cell);
 
-    cell.appendChild(cellValue);
-    cell.id = `cell-${i + 1}`;
+    cell.classList.add(`cell-${i + 1}`);
   }
 };
 
@@ -24,7 +23,9 @@ const createCells = function (numberOfCells) {
 
 function genRandomNumber() {
   //eseguo un controllo dei numeri di modo che non superino il 76
-  if (memory.length >= 76) return null;
+  if (memory.length >= 76) {
+    return null;
+  }
 
   //genero il numero randomico facendo modo che non superi il numero
   //assegnato alla memoria
@@ -53,9 +54,10 @@ let showNumber = function () {
   extractedNumber.innerText = randomNumber;
 
   if (randomNumber !== "All numbers drawn!") {
-    const drawnCell = document.getElementById(`cell-${randomNumber}`);
-    if (drawnCell) {
-      drawnCell.classList.add("cell-selected");
+    const drawnCells = document.getElementsByClassName(`cell-${randomNumber}`);
+    //drawnCells è una HTMLCollection, per usare il forEach bisogna convertirlo
+    if (drawnCells?.length) {
+      Array.from(drawnCells).forEach((e) => e.classList.add("cell-selected"));
     }
   }
 };
@@ -65,3 +67,31 @@ document.getElementById("extractButton").addEventListener("click", showNumber);
 
 //creo le celle
 createCells(76);
+
+const createRandomCells = function (numberOfCells) {
+  const numbersSection = document.getElementById("genCards");
+
+  let cellMemory = [];
+
+  for (let i = 0; i < numberOfCells; i++) {
+    let randomNumber;
+
+    do {
+      randomNumber = Math.floor(Math.random() * 76) + 1;
+    } while (cellMemory.includes(randomNumber));
+
+    cellMemory.push(randomNumber);
+
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+
+    const cellValue = document.createElement("h3");
+    cellValue.innerText = randomNumber;
+
+    cell.appendChild(cellValue);
+    numbersSection.appendChild(cell);
+    cell.classList.add(`cell-${randomNumber}`);
+  }
+};
+
+createRandomCells(24);
