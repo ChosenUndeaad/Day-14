@@ -12,6 +12,9 @@ const createCells = function (numberOfCells) {
 
     cell.appendChild(cellValue);
     numbersSection.appendChild(cell);
+
+    cell.appendChild(cellValue);
+    cell.id = `cell-${i + 1}`;
   }
 };
 
@@ -21,9 +24,10 @@ function genRandomNumber() {
   let randomNumber;
 
   if (memory.length >= 76) return "All numbers drawn!";
-  do {
+  else {
     randomNumber = Math.floor(Math.random() * 76) + 1;
-  } while (memory.includes(randomNumber));
+  }
+  while (memory.includes(randomNumber));
 
   memory.push(randomNumber);
   return randomNumber;
@@ -34,6 +38,13 @@ let showNumber = function () {
   const randomNumber = genRandomNumber();
 
   extractedNumber.innerText = randomNumber;
+
+  if (randomNumber !== "All numbers drawn!") {
+    const drawnCell = document.getElementById(`cell-${randomNumber}`);
+    if (drawnCell) {
+      drawnCell.classList.add("cell-selected");
+    }
+  }
 };
 
 document.getElementById("extractButton").addEventListener("click", showNumber);
