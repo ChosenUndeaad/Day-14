@@ -1,0 +1,56 @@
+body {
+  background-color: rgb(47, 49, 60);
+  color: white;
+  width: 50%;
+  margin: 0 auto;
+  display: inlblock;
+  margin-top: 10em;
+  margin-bottom: 10em;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#container {
+  background-color: rgb(24, 24, 27);
+  padding: 1em;
+  border-radius: 1em;
+}
+
+#extractedNumber {
+  margin: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #ff7bb2;
+}
+
+button {
+  padding: 0.5rem;
+  background-color: #ff7bb2;
+  width: 10rem;
+  border-radius: 0.5rem;
+  border-color: #ff7bb2;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.cell {
+  background-color: rgb(24, 24, 27);
+  border-color: #ff7bb2;
+  border-radius: 0.5em;
+  border-style: solid;
+  color: white;
+  margin: 1em;
+  padding: 1em;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+}
+
+#bingo {
+  background-color: rgb(24, 24, 27);
+  padding: 1em;
+  border-radius: 1em;
+}
